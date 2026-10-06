@@ -1,0 +1,11 @@
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0.7
+    command: start-dev --import-realm
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin   # lab-only default
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./orders-realm.json:/opt/keycloak/data/import/orders-realm.json:ro
